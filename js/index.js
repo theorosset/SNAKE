@@ -10,10 +10,17 @@ const square = 20;
 const snake = new Snake(square);
 const point = new Point(square);
 
+//gestion du DOM
+function getScore() {
+  const score = document.querySelector("#point");
+  score.innerText = snake.body.length - 1;
+}
+
 let direction = "right";
 
 //detection de la touche presser (fleche)
 document.addEventListener("keydown", (e) => {
+  e.stopPropagation();
   switch (e.key) {
     case "ArrowLeft":
       direction = "left";
@@ -36,6 +43,7 @@ function main() {
   clear();
   point.draw();
   snake.update();
+  getScore();
   if (snake.alive) {
     setTimeout(begin, 250);
   } else {
