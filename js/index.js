@@ -8,10 +8,8 @@ const square = 20;
 
 //constructeur
 const snake = new Snake(square);
-const block = new Block(square);
 const point = new Point(square);
 
-//direction du serpent
 let direction = "right";
 
 //detection de la touche presser (fleche)
