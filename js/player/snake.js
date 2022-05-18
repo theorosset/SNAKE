@@ -31,6 +31,12 @@ class Snake {
     }
     head.teleportOpponent();
   }
+  getPoint() {
+    const head = this.body[0];
+    if (head.x === point.x && head.y === point.y) {
+      point.randomPoint();
+    }
+  }
 
   addBlock(x, y) {
     const block = new Block(x, y, this.blockSize);
@@ -39,7 +45,7 @@ class Snake {
 
   update() {
     this.move();
-
+    this.getPoint();
     for (let b of this.body) {
       b.draw();
     }

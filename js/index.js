@@ -9,6 +9,7 @@ const square = 20;
 //constructeur
 const snake = new Snake(square);
 const block = new Block(square);
+const point = new Point(square);
 
 //direction du serpent
 let direction = "right";
@@ -35,6 +36,7 @@ document.addEventListener("keydown", (e) => {
 
 function main() {
   clear();
+  point.draw();
   snake.update();
   if (snake.alive) {
     setTimeout(begin, 250);
