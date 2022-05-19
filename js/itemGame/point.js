@@ -2,6 +2,7 @@ class Point {
   constructor(size) {
     this.sizePoint = size;
     this.randomPoint();
+    this.point = 0;
   }
 
   randomPoint() {

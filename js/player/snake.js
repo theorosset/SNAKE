@@ -8,6 +8,7 @@ class Snake {
     this.addBlock(this.x, this.y);
     this.life = 1;
     this.alive = true;
+    this.lvl = 1;
   }
   move() {
     const head = this.body[0];
@@ -60,6 +61,19 @@ class Snake {
       this.addBlock(x, y);
     }
   }
+
+  initLvl() {
+    const head = this.body[0];
+    if (head.x === point.x && head.y === point.y) {
+      point.point += 1;
+      console.log(point.point);
+    } else if (point.point === 10) {
+      speed -= 25;
+      this.lvl += 1;
+      point.point = 0;
+    }
+  }
+
   addBlock(x, y) {
     const block = new Block(x, y, this.blockSize);
     this.body.push(block);
@@ -72,6 +86,7 @@ class Snake {
 
   update() {
     this.move();
+    this.initLvl();
     this.getPoint();
 
     for (let [i, b] of this.body.entries()) {

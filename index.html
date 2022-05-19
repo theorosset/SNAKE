@@ -10,14 +10,22 @@
 </head>
 
 <body>
-    <header class="infoGame">
-        <h1>SNAKE</h1>
-        <p>Score : <span id="point"></span></p>
+    <!--header-->
+    <header class="elementGame">
+        <div class="infoGame">
+            <h1>SNAKE</h1>
+            <div class="scoreLvl">
+                <p>Score : <span id="point"></span></p>
+                <p class="lvlText">level : <span id="lvl"></span></p>
+            </div>
+        </div>
     </header>
+    <!--canvas-->
     <div class="game">
         <canvas id="canvas" width="600" height="600"></canvas>
     </div>
 </body>
+<!--script js-->
 <script src="./js/player/snake.js"></script>
 <script src="./js/itemGame/block.js"></script>
 <script src="./js/itemGame/point.js"></script>

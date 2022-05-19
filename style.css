@@ -1,3 +1,4 @@
+/* selecteur general*/
 body{
     margin: 0;
 }
@@ -12,12 +13,24 @@ p{
     font-size: 20px;
     color: white;
 }
-.infoGame{
+/*header*/
+.elementGame{
     height: 85px;
     background-color: black;
 }
-
-
+.infoGame{
+    margin: auto;
+    max-width: 900px;
+}
+.scoreLvl{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.lvlText{
+    margin-left: 20px;
+}
+/*canvas*/
 .game{
     display: flex;
     justify-content: center;

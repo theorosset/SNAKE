@@ -2,18 +2,20 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-//terrain du snake
+//terrain du snake et sa vitesse
 const gameSize = 600;
 const square = 20;
-
+let speed = 250;
 //constructeur
 const snake = new Snake(square);
 const point = new Point(square);
 
 //gestion du DOM
-function getScore() {
+function getScoreAndDifficulty() {
   const score = document.querySelector("#point");
+  const level = document.querySelector("#lvl");
   score.innerText = snake.body.length - 1;
+  level.innerText = snake.lvl;
 }
 
 let direction = "right";
@@ -43,9 +45,9 @@ function main() {
   clear();
   point.draw();
   snake.update();
-  getScore();
+  getScoreAndDifficulty();
   if (snake.alive) {
-    setTimeout(begin, 250);
+    setTimeout(begin, speed);
   } else {
     alert("perdu");
   }
