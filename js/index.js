@@ -9,6 +9,7 @@ let speed = 250;
 //constructeur
 const snake = new Snake(square);
 const point = new Point(square);
+const snakeBot = new SnakeBot(square);
 
 //gestion du DOM
 function getScoreAndDifficulty() {
@@ -18,8 +19,16 @@ function getScoreAndDifficulty() {
   level.innerText = snake.lvl;
 }
 
-let direction = "right";
+//gestion du bot
+function botControl() {
+  snakeBot.update();
+}
+function beginBot() {
+  botControl();
+}
 
+//gestion de la direction
+let direction = "right";
 //detection de la touche presser (fleche)
 document.addEventListener("keydown", (e) => {
   e.stopPropagation();
@@ -41,15 +50,34 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+function restartSnake() {
+  const body = snake.body.length - 1;
+
+  return (
+    snake.body.splice(1, body),
+    (snake.life = 1),
+    (snake.alive = true),
+    (snake.lvl = 1),
+    (speed = 250)
+  );
+}
+
 function main() {
   clear();
   point.draw();
   snake.update();
+
   getScoreAndDifficulty();
   if (snake.alive) {
     setTimeout(begin, speed);
   } else {
     alert("perdu");
+    point.point = 0;
+    restartSnake();
+    begin();
+  }
+  if (snake.lvl === 3) {
+    botControl();
   }
 }
 
@@ -60,5 +88,4 @@ function clear() {
 function begin() {
   main();
 }
-
 begin();

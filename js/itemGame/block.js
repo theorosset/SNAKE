@@ -7,7 +7,7 @@ class Block {
     this.size = size;
   }
   draw() {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "yellow";
     ctx.fillRect(this.x * this.size, this.y * this.size, this.size, this.size);
   }
 

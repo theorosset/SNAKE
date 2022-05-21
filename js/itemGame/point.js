@@ -10,7 +10,6 @@ class Point {
     this.x = Math.round((Math.random() * gameSize) % maxSizeWidth);
     this.y = Math.round((Math.random() * gameSize) % maxSizeWidth);
     this.limitOfRandomNumber();
-    console.log(this.x, this.y);
   }
   draw() {
     ctx.fillStyle = "white";
