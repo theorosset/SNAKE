@@ -10,6 +10,7 @@ class Snake {
     this.alive = true;
     this.lvl = 1;
   }
+  //gestion du deplacement du serpent + passage d'un coter a l'autre
   move() {
     const head = this.body[0];
     head.oldX = head.x;
@@ -32,6 +33,7 @@ class Snake {
     }
     head.teleportOpponent();
   }
+  //gestion du mouvement du corp
   newBlockBody() {
     let { x, y } = this.body[this.body.length - 1];
     switch (direction) {
@@ -52,7 +54,7 @@ class Snake {
     }
     return { x, y };
   }
-
+  //si un point est recupérer on ajoute un block au body
   getPoint() {
     const head = this.body[0];
     if (head.x === point.x && head.y === point.y) {
@@ -61,7 +63,21 @@ class Snake {
       this.addBlock(x, y);
     }
   }
-
+  //perdu si on touche le bot (uniquement la tête)
+  ifTuchBot() {
+    const head = this.body[0];
+    const headBot = snakeBot.body[0];
+    if (head.x === headBot.x && head.y === headBot.y) {
+      this.life -= 1;
+    }
+  }
+  // si la vie du serpent vaut 0 fin de la partie
+  snakeDead() {
+    if (this.life === 0) {
+      snake.alive = false;
+    }
+  }
+  //augmentation du niveau selon score
   initLvl() {
     const head = this.body[0];
     if (head.x === point.x && head.y === point.y) {
@@ -87,7 +103,9 @@ class Snake {
   update() {
     this.move();
     this.initLvl();
+    this.ifTuchBot();
     this.getPoint();
+    this.snakeDead();
 
     for (let [i, b] of this.body.entries()) {
       const snakeBitesBody = this.ifSnakeBitesBody(b);
@@ -98,9 +116,6 @@ class Snake {
 
         if (snakeBitesBody === true) {
           this.life -= 1;
-          if (this.life === 0) {
-            this.alive = false;
-          }
         }
       }
 

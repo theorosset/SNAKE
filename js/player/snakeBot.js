@@ -8,8 +8,6 @@ class SnakeBot {
     this.addBlock(this.x, this.y);
     this.goX = 18;
     this.goY = 28;
-    this.life = 1;
-    this.alive = true;
     this.lvl = 1;
   }
 
@@ -33,11 +31,12 @@ class SnakeBot {
       this.goY = Math.round((Math.random() * gameSize) % maxSizeWidth);
     }
   }
-
+  //ajout de la tête
   addBlock(x, y) {
     const block = new BlockBot(x, y, this.blockSize);
     this.body.push(block);
   }
+
   update() {
     this.goToPosition();
     for (let b of this.body) {

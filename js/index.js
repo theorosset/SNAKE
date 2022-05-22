@@ -76,7 +76,7 @@ function main() {
     restartSnake();
     begin();
   }
-  if (snake.lvl === 3) {
+  if (snake.lvl >= 3) {
     botControl();
   }
 }
