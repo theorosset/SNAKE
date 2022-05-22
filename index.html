@@ -11,19 +11,23 @@
 
 <body>
     <!--header-->
-    <header class="elementGame">
-        <div class="infoGame">
-            <h1>SNAKE</h1>
-            <div class="scoreLvl">
-                <p>Score : <span id="point"></span></p>
-                <p class="lvlText">level : <span id="lvl"></span></p>
-            </div>
-        </div>
+    <header class="headGame">
+        <h1 class="titleGame">SNAKE</h1>
     </header>
     <!--canvas-->
     <div class="game">
+        <div class="allOfSnake">
+            <div class="scoreLvl">
+                <p>Score : <span id="point"></span></p>
+                <p class="lvlText">level : <span id="lvl"></span></p>
+                <p class="highScore">Meilleur Score : <span id="bestScore"></span></p>
+            </div>
+        </div>
         <canvas id="canvas" width="600" height="600"></canvas>
     </div>
+
+
+
 </body>
 <!--script js-->
 <script src="./js/player/snake.js"></script>

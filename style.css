@@ -11,33 +11,49 @@ h1{
 p{
     margin: 0;
     font-size: 20px;
-    color: white;
+    color: black;
 }
 /*header*/
-.elementGame{
+.headGame{
+    display: flex;
     height: 85px;
     background-color: black;
 }
-.infoGame{
+.titleGame{
     margin: auto;
     max-width: 900px;
 }
-.scoreLvl{
-    display: flex;
-    justify-content: space-around;
-    
-}
-.lvlText{
-    margin-left: 20px;
-}
+
 /*canvas*/
 .game{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 650px;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  
 }
 
 #canvas{
     background-color: black;
+    grid-column: 2/3;
+}
+
+/*onglet des info du serpent*/
+.allOfSnake{
+display: flex;
+
+justify-content: center;
+grid-column: 1/2;
+grid-row: 1;
+}
+.scoreLvl{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid red;
+    border-radius: 10px;
+    box-shadow: -2px -1px 15px 1px rgba(0,0,0,0.35);
+    background-color: red;
+    width: 200px;
+    height: 100px;   
 }
