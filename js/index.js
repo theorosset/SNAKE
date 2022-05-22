@@ -12,6 +12,17 @@ const point = new Point(square);
 const snakeBot = new SnakeBot(square);
 
 //gestion du DOM
+const highScoreInLs = localStorage.getItem("highScore");
+const highScore = document.querySelector("#bestScore");
+
+//si le ls est null on inscrit une valeur a l'interieur  + initialisation du meilleur score a 0
+if (highScoreInLs === null) {
+  localStorage.setItem("highScore", 0);
+  highScore.innerText = 0;
+} else {
+  highScore.innerText = highScoreInLs;
+}
+
 function getScoreAndDifficulty() {
   const score = document.querySelector("#point");
   const level = document.querySelector("#lvl");
@@ -19,6 +30,13 @@ function getScoreAndDifficulty() {
   level.innerText = snake.lvl;
 }
 
+//function pour ajouter le score dans le ls si il est supérieur
+function addScoreInLs() {
+  if (highScoreInLs < snake.body.length - 1) {
+    localStorage.setItem("highScore", snake.body.length - 1);
+    return (highScore.innerText = snake.body.length - 1);
+  }
+}
 //gestion du bot
 function botControl() {
   snakeBot.update();
@@ -71,6 +89,7 @@ function main() {
   if (snake.alive) {
     setTimeout(begin, speed);
   } else {
+    addScoreInLs();
     alert("perdu");
     point.point = 0;
     restartSnake();

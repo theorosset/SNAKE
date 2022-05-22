@@ -67,7 +67,7 @@ class Snake {
   ifTuchBot() {
     const head = this.body[0];
     const headBot = snakeBot.body[0];
-    if (head.x === headBot.x && head.y === headBot.y) {
+    if (head.x === headBot.x && head.y === headBot.y && this.lvl >= 3) {
       this.life -= 1;
     }
   }

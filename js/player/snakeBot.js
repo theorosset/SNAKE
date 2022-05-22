@@ -6,8 +6,8 @@ class SnakeBot {
     this.blockSize = size;
     this.body = [];
     this.addBlock(this.x, this.y);
-    this.goX = 18;
-    this.goY = 28;
+    this.goX = 0;
+    this.goY = 0;
     this.lvl = 1;
   }
 
